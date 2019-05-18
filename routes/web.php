@@ -11,4 +11,4 @@
 |
 */
 
-Route::get('/', 'IndexController@index')->name('index');
+Route::get('/', 'ChallengeQuestionsController@index')->name('index');

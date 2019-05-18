@@ -1,8 +1,44 @@
 // Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
-
+//@import url('https://fonts.googleapis.com/css?family=Nunito');
 // Variables
-@import 'variables';
-
+//@import 'variables';
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+$color: #636b6f;
+body {
+    color: $color;
+}
+
+// navbar
+._nav {
+
+}
+
+._content {
+    margin-top: 60px;
+
+    ._list {
+        ._list-item:nth-child(2n+1) {
+            background-color: #eee;
+        }
+    }
+
+    .page-item.active .page-link {
+        background-color: $color;
+        border-color: $color;
+    }
+
+    .page-link {
+        color: $color;
+        //background-color: $color;
+    }
+
+    ._pagination {
+        margin-top: 10px;
+    }
+}
+
+._footer {
+    border-top: 1px solid crimson;
+}
