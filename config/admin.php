@@ -22,7 +22,8 @@ return [
     | `img` tag, eg '<img src="http://logo-url" alt="Admin logo">'.
     |
     */
-    'logo' => '<b>Laravel</b> admin',
+//    'logo' => '<b>Laravel</b> admin',
+    'logo' => '<b>Xuexi</b> Cankao',
 
     /*
     |--------------------------------------------------------------------------
@@ -273,7 +274,8 @@ return [
     | "sidebar-mini".
     |
     */
-    'layout' => ['sidebar-mini', 'sidebar-collapse'],
+//    'layout' => ['sidebar-mini', 'sidebar-collapse'],
+    'layout' => ['fiexed', 'sidebar-mini'],
 
     /*
     |--------------------------------------------------------------------------
