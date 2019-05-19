@@ -49,7 +49,7 @@
         $(function () {
 
 
-            $('#search').keyup(function () {
+            $('#search').bind("keyup change", function () {
                 if (this.value.length > 1) {
                     window.axios.get('/?' + 'keyword=' + this.value).then(function (response) {
                         console.log(response.data);
@@ -75,8 +75,6 @@
                         var bottom = '</ul>';
 
                         $('._list').html(top + middle + bottom);
-
-
                     });
                 }
 

@@ -15,9 +15,9 @@ class CreateQuestionsTable extends Migration
     {
         Schema::create('questions', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('ask')->unique();
-            $table->string('answer', 100)->nullable();
-            $table->string('type', 50);
+            $table->string('ask', 150)->unique();
+            $table->string('answer', 80)->nullable();
+            $table->string('type', 20);
             $table->softDeletes();
             $table->timestamps();
         });
