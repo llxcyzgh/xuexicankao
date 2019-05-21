@@ -12,3 +12,4 @@
 */
 
 Route::get('/', 'ChallengeQuestionsController@index')->name('index');
+Route::get('/index', 'IndexController@index')->name('index2');
