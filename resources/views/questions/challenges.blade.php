@@ -50,7 +50,7 @@
 
 
             $('#search').bind("keyup change", function () {
-                if (this.value.length > 1) {
+                if (this.value.length >= 1) {
                     window.axios.get('/?' + 'keyword=' + this.value).then(function (response) {
                         console.log(response.data);
 
