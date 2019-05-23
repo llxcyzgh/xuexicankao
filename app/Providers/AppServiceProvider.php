@@ -23,6 +23,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        // 修改字段默认的长度
+        \Schema::defaultStringLength(191);
     }
 }
