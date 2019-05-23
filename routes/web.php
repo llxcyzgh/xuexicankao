@@ -12,4 +12,9 @@
 */
 
 Route::get('/', 'ChallengeQuestionsController@index')->name('index');
-Route::get('/index', 'IndexController@index')->name('index2');
+Route::get('/questions', 'ChallengeQuestionsController@index')->name('index.questions');
+Route::get('/questions/create', 'ChallengeQuestionsController@create')->name('index.questions.create');
+Route::get('/questions/store', 'ChallengeQuestionsController@create')->name('index.questions.store');
+
+
+

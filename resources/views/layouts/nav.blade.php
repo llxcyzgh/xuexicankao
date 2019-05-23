@@ -14,6 +14,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="http://www.xuexi.cn" target="_blank">学习强国</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link text-danger bg-light" href="{{ route('questions.create') }}">我要增加题目 <span class="badge badge-light">New</span></a>
+                </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
