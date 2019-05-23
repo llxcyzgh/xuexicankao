@@ -15,7 +15,7 @@ class QuestionRequest extends FormRequest
         return [
 //            'type'    => 'required',
             'ask'     => 'required|string',
-            'answer'  => 'required|string',
+            'answer'  => 'string',
             'captcha' => 'required|captcha',
         ];
     }
