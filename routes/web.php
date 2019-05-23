@@ -14,7 +14,8 @@
 Route::get('/', 'ChallengeQuestionsController@index')->name('index');
 Route::get('/questions', 'ChallengeQuestionsController@index')->name('index.questions');
 Route::get('/questions/create', 'ChallengeQuestionsController@create')->name('index.questions.create');
-Route::get('/questions/store', 'ChallengeQuestionsController@create')->name('index.questions.store');
+Route::get('/questions/{question}', 'ChallengeQuestionsController@show')->name('index.questions.show');
+Route::post('/questions/store', 'ChallengeQuestionsController@store')->name('index.questions.store');
 
 
 

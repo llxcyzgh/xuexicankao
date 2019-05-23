@@ -3,6 +3,7 @@
 // Variables
 //@import 'variables';
 // Bootstrap
+@import 'yui_css_reset';
 @import '~bootstrap/scss/bootstrap';
 
 $color: #636b6f;
@@ -12,7 +13,11 @@ body {
 
 // navbar
 ._nav {
-
+    .navbar-brand {
+        a {
+            text-decoration: none;
+        }
+    }
 }
 
 ._content {

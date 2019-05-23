@@ -28,7 +28,15 @@ class ChallengeQuestionsController extends Controller
 
     public function store(QuestionRequest $request, Question $question)
     {
-        return 1;
-        var_dump($request);
+        $question->type   = 'challenge';
+        $question->ask    = $request->ask;
+        $question->answer = $request->answer;
+        $question->save();
+        return redirect()->back();
+    }
+
+    public function show(Question $question)
+    {
+        return view('questions/show', compact('question'));
     }
 }

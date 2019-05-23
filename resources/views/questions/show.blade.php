@@ -3,12 +3,8 @@
 @section('title','| Challenges - add')
 
 @section('content')
-    <h1 class="page-header">增加题目</h1>
-
-    @include('common._error')
-
-    <form action="{{ route('index.questions.store') }}" method="post">
-        @csrf
+    <h1 class="page-header">查看题目</h1>
+    <form>
         <div class="input-group mb-3">
             <div class="input-group-prepend">
                 <label class="input-group-text" for="inputGroupSelect01">类&emsp;型</label>
@@ -25,27 +21,16 @@
             <div class="input-group-prepend">
                 <span class="input-group-text">问&emsp;题</span>
             </div>
-            <textarea class="form-control" name="ask"></textarea>
+            <textarea class="form-control" name="ask" readonly>{{ $question->ask }}</textarea>
         </div>
 
         <div class="input-group mb-3">
             <div class="input-group-prepend">
                 <span class="input-group-text">答&emsp;案</span>
             </div>
-            <input class="form-control" type="text" name="answer">
+            <input class="form-control" type="text" name="answer" readonly value="{{ $question->answer }}">
         </div>
-
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <span class="input-group-text">验证码</span>
-            </div>
-            <input class="form-control" type="text" name="captcha">
-        </div>
-
-
-        <button type="submit" class="btn btn-success">提&emsp;交</button>
     </form>
-
 
 @endsection
 

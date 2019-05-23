@@ -1,7 +1,7 @@
 <nav class="_nav navbar navbar-dark navbar-expand-sm bg-dark fixed-top">
     <div class="container">
         <div class="navbar-brand">
-            XuexiCankao
+            <a href="/" class="text-light">XuexiCankao</a>
         </div>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -15,7 +15,7 @@
                     <a class="nav-link" href="http://www.xuexi.cn" target="_blank">学习强国</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-danger bg-light" href="{{ route('questions.create') }}">我要增加题目 <span class="badge badge-light">New</span></a>
+                    <a class="nav-link text-danger bg-light" href="{{ route('index.questions.create') }}">我要增加题目 <span class="badge badge-light">New</span></a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
