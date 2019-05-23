@@ -32,7 +32,8 @@ class ChallengeQuestionsController extends Controller
         $question->ask    = $request->ask;
         $question->answer = $request->answer;
         $question->save();
-        return redirect()->back();
+        session()->flash('success', '增加一条题目 成功!');
+        return redirect()->route('index.questions.show', compact('question'));
     }
 
     public function show(Question $question)

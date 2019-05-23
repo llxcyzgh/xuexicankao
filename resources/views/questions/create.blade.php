@@ -3,7 +3,7 @@
 @section('title','| Challenges - add')
 
 @section('content')
-    <h1 class="page-header">增加题目</h1>
+    <h1>增加题目</h1>
 
     @include('common._error')
 
@@ -38,6 +38,7 @@
         <div class="input-group mb-3">
             <div class="input-group-prepend">
                 <span class="input-group-text">验证码</span>
+                <img src="{{ captcha_src('math') }}" title="点击图片更换验证码" onclick="this.src='/captcha/math?'+Math.random()">
             </div>
             <input class="form-control" type="text" name="captcha">
         </div>

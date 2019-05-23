@@ -3,7 +3,8 @@
 @section('title','| Challenges - add')
 
 @section('content')
-    <h1 class="page-header">查看题目</h1>
+    <h1>查看题目</h1>
+    @include('common._msg')
     <form>
         <div class="input-group mb-3">
             <div class="input-group-prepend">

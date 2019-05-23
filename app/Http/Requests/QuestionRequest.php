@@ -13,10 +13,10 @@ class QuestionRequest extends FormRequest
     public function rules()
     {
         return [
-            'type'    => 'required',
+//            'type'    => 'required',
             'ask'     => 'required|string',
             'answer'  => 'required|string',
-            'captcha' => 'required|string',
+            'captcha' => 'required|captcha',
         ];
     }
 }
