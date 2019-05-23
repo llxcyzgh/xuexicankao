@@ -19,4 +19,11 @@ class QuestionRequest extends FormRequest
             'captcha' => 'required|captcha',
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'captcha' => '验证码 不正确',
+        ];
+    }
 }
