@@ -3,8 +3,13 @@
         <h1>Vue Router Demo App</h1>
 
         <p>
-            <router-link :to="{ name: 'home' }">Home</router-link>
-            <router-link :to="{ name: 'hello' }">Hello World</router-link>
+            <router-link :to="{ name: 'home' }">Home</router-link> |
+            <router-link :to="{ name: 'hello' }">Hello World</router-link> |
+            <router-link :to="{ name: 'users.index' }">Users index</router-link> |
+            <router-link :to="{ name: 'users.edit' }">Users edit</router-link>
+
+
+            <router-link :to="{ name: 'users.test' }">Users test</router-link>
         </p>
 
         <div class="container">
