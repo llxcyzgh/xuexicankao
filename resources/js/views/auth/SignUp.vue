@@ -1,5 +1,31 @@
 <template>
     <div class="sign-up">
+        <div class="error" v-if="error">
+            <b-alert variant="danger">
+                <h4>{{ error.message }}</h4>
+                <p v-for="(value,index) in error.errors">
+                    {{ index }} - {{ value.join(' ') }}
+                </p>
+            </b-alert>
+        </div>
+
+        <div class="success" v-if="success">
+            <b-alert
+                :show="dismissCountDown"
+                variant="success"
+                @dismissed="dismissCountDown=0"
+                @dismiss-count-down="countDownChanged"
+            >
+                <p>Jump to login page after {{ dismissCountDown }} seconds...</p>
+                <b-progress
+                    variant="success"
+                    :max="dismissSecs"
+                    :value="dismissCountDown"
+                    height="4px"
+                ></b-progress>
+            </b-alert>
+        </div>
+
         <b-form @submit="onSubmit" @reset="onReset" v-if="show">
             <b-form-group
                 id="input-group-1"
@@ -10,8 +36,6 @@
                 :valid-feedback="validFeedback_1"
                 :state="state_1"
             >
-                <b-form-valid-feedback :state="true" tag="span" class="text-danger">yes</b-form-valid-feedback>
-
                 <b-form-input
                     id="input-1"
                     v-model="form.email"
@@ -68,11 +92,17 @@
 </template>
 
 <script>
+    import axios from 'axios';
+
     export default {
         data() {
             return {
+                error: false,
+                success: false,
                 show: true,
-                form_init: true,
+                form_submit: false,
+                dismissCountDown: 0,
+                dismissSecs: 3,
                 form: {
                     email: '',
                     password: '',
@@ -80,14 +110,31 @@
                 },
             }
         },
+        created() {
+
+        },
         methods: {
             onSubmit(evt) {
                 evt.preventDefault();
-                this.form_init = false;
+                this.form_submit = true;
                 if (this.state) {
                     alert(JSON.stringify(this.form));
                 }
                 // alert('不正确');
+                const params = JSON.stringify(this.form);
+                axios
+                    .post('/api/users', this.form)
+                    .then(response => {
+                        console.log(response.data);
+                        this.error = false;
+                        this.success = true;
+                        this.dismissCountDown = this.dismissSecs;
+                    })
+                    .catch(error => {
+                        console.log(error.response.data || error);
+                        this.error = error.response.data;
+                    })
+
             },
             onReset(evt) {
                 evt.preventDefault()
@@ -99,8 +146,11 @@
                 this.show = false;
                 this.$nextTick(() => {
                     this.show = true;
-                    this.form_init = true;
+                    this.form_submit = false;
                 });
+            },
+            countDownChanged(dismissCountDown) {
+                this.dismissCountDown = dismissCountDown;
             },
 
         },
@@ -113,7 +163,7 @@
                 return !this.invalidFeedback_1 && !this.validFeedback_1 ? 'Email required' : '';
             },
             invalidFeedback_1() {
-                if (!this.form_init && !this.form.email) {
+                if (this.form_submit && !this.form.email) {
                     return 'email cannot be empty'
                 }
                 return this.state_1 !== true && this.form.email ? 'Invalid email' : '';
@@ -130,7 +180,7 @@
                 return !this.invalidFeedback_2 && !this.validFeedback_2 ? '密码由字母数字下划线中划线组成, 且大于6位' : '';
             },
             invalidFeedback_2() {
-                if (!this.form_init && !this.form.password) {
+                if (this.form_submit && !this.form.password) {
                     return 'password cannot be empty'
                 }
                 return this.state_2 !== true && this.form.password ? '密码由字母数字下划线中划线组成, 且大于6位' : '';
@@ -146,10 +196,10 @@
                 return !this.invalidFeedback_3 && !this.validFeedback_3 ? '' : '';
             },
             invalidFeedback_3() {
-                if (!this.form_init && !this.form.password_confirmation) {
+                if (this.form_submit && !this.form.password_confirmation) {
                     return 'password confimation cannot be empty';
                 }
-                return this.form.password_confirmation && this.form.password_confirmation !== this.form.password ? 'password not the same' : '';
+                return this.form.password_confirmation && this.form.password_confirmation !== this.form.password ? 'The password confirmation does not match.' : '';
             },
             validFeedback_3() {
                 return this.state_3 === true ? 'ok' : '';

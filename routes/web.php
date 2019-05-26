@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/{any}','SpaController@index')->where('any','.*');
+Route::any('/{any}','SpaController@index')->where('any','.*');
 
 Route::get('/', 'ChallengeQuestionsController@index')->name('index');
 Route::get('/questions', 'ChallengeQuestionsController@index')->name('index.questions');
