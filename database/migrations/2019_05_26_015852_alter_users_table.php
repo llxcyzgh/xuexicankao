@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AlterNameNullableOfUsersTable extends Migration
+class AlterUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -15,6 +15,9 @@ class AlterNameNullableOfUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->string('name')->nullable()->change();
+            $table->string('password')->nullable()->change();
+
+            $table->string('password_before')->nullable()->after('password');
         });
     }
 
@@ -27,6 +30,9 @@ class AlterNameNullableOfUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->string('name')->nullable(false)->change();
+            $table->string('password')->nullable(false)->change();
+
+            $table->dropColumn('password_before');
         });
     }
 }
